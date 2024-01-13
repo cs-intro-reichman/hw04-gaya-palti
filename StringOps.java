@@ -22,7 +22,8 @@ public class StringOps {
     //////                                               ///////
     ////////////////////////////////////////////////////////////
     public static void main(String[] args) {
-        System.out.println(capVowelsLowRest("intro"));  
+        //System.out.println(capVowelsLowRest("intro")); 
+        System.out.println(camelCase("    Intro to      coMPUter      sCIEncE")); 
     }
 
     public static String capVowelsLowRest (String string) {
@@ -45,8 +46,29 @@ public class StringOps {
     }
 
     public static String camelCase (String string) {
-        // Write your code here:
-        return "";
+        String str = "";
+        boolean firstLetter = true;
+        boolean firstWord = true;
+        for (int i=0; i < string.length(); i++){
+            char ch = string.charAt(i);
+            if (ch == ' ') {
+                if (!firstLetter || !firstWord) {
+                    firstWord = false;
+                    firstLetter = true;
+                }
+            } else {
+                if (firstWord){
+                    ch = toLowerCase(ch);
+                } else if (firstLetter && !firstWord){
+                    ch = toUpperCase(ch);
+                } else if (!firstLetter && !firstWord){
+                    ch = toLowerCase(ch);
+                }
+                firstLetter = false;
+                str += ch;
+            }
+        }
+        return str;
     }
 
     public static int[] allIndexOf (String string, char chr) {
@@ -55,7 +77,7 @@ public class StringOps {
     }
 
     public static char toLowerCase (char chAt) {
-        char ch = 0;
+        char ch = chAt;
         if (chAt >= 'A' && chAt <= 'Z' ){
             ch = (char) (chAt + 32);
         } else if (chAt >= 'a' && chAt <= 'z' ) {
@@ -65,7 +87,7 @@ public class StringOps {
     }
 
     public static char toUpperCase (char chAt) {
-        char ch = 0;
+        char ch = chAt;
         if (chAt >= 'A' && chAt <= 'Z' ){
             ch = chAt;
         } else if (chAt >= 'a' && chAt <= 'z' ) {
