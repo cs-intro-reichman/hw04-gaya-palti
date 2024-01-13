@@ -22,12 +22,26 @@ public class StringOps {
     //////                                               ///////
     ////////////////////////////////////////////////////////////
     public static void main(String[] args) {
-        
+        System.out.println(capVowelsLowRest("intro"));  
     }
 
     public static String capVowelsLowRest (String string) {
-        // Write your code here:
-        return "";
+        String str = "";
+        for (int i=0; i < string.length(); i++){
+            char ch = string.charAt(i);
+            if(ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u'){
+                ch = toUpperCase(string.charAt(i));  
+            }
+            else if(ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U'){
+                //do nothing
+            } else if (ch == ' ') {
+                //do nothing
+            }else {
+                ch = toLowerCase(string.charAt(i));
+            }
+            str += ch;
+        }
+        return str;
     }
 
     public static String camelCase (String string) {
@@ -39,4 +53,25 @@ public class StringOps {
         // Write your code here:
         return new int[1];
     }
+
+    public static char toLowerCase (char chAt) {
+        char ch = 0;
+        if (chAt >= 'A' && chAt <= 'Z' ){
+            ch = (char) (chAt + 32);
+        } else if (chAt >= 'a' && chAt <= 'z' ) {
+            ch = chAt;
+        }
+        return ch;
+    }
+
+    public static char toUpperCase (char chAt) {
+        char ch = 0;
+        if (chAt >= 'A' && chAt <= 'Z' ){
+            ch = chAt;
+        } else if (chAt >= 'a' && chAt <= 'z' ) {
+            ch = (char) (chAt - 32);
+        }
+        return ch;
+    }    
+        
 }
