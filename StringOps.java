@@ -23,9 +23,14 @@ public class StringOps {
     ////////////////////////////////////////////////////////////
     public static void main(String[] args) {
         //System.out.println(capVowelsLowRest("intro")); 
-        System.out.println(camelCase("    Intro to      coMPUter      sCIEncE")); 
+        //System.out.println(camelCase("    Intro to      coMPUter      sCIEncE"));  
+        //int[] a = allIndexOf("Hello world",'d');
+        // for (int i = 0; i < a.length; i++){
+        //     System.out.print(a[i]);
+        // }            
     }
 
+    //recive a string and check for every char if vowle and change to upper or lower case.
     public static String capVowelsLowRest (String string) {
         String str = "";
         for (int i=0; i < string.length(); i++){
@@ -45,6 +50,7 @@ public class StringOps {
         return str;
     }
 
+    // 
     public static String camelCase (String string) {
         String str = "";
         boolean firstLetter = true;
@@ -52,11 +58,13 @@ public class StringOps {
         for (int i=0; i < string.length(); i++){
             char ch = string.charAt(i);
             if (ch == ' ') {
+                // increae the counters if a word ended.
                 if (!firstLetter || !firstWord) {
                     firstWord = false;
                     firstLetter = true;
                 }
             } else {
+                // change to lower or upper as expected.
                 if (firstWord){
                     ch = toLowerCase(ch);
                 } else if (firstLetter && !firstWord){
@@ -71,11 +79,28 @@ public class StringOps {
         return str;
     }
 
+    // recive a string and char and returns an array containing all the indexes in which the character appears in the string.
     public static int[] allIndexOf (String string, char chr) {
-        // Write your code here:
-        return new int[1];
+        int counter = 0;
+        // check what should be the lenth of he new array.
+        for (int i=0; i < string.length(); i++){
+            if (string.charAt(i) == chr){
+                counter ++;
+            }
+        }
+        int[] indexArray = new int[counter];
+        int index = 0;
+        // put all the indexes of the char in a new array.
+        for (int i=0; i < string.length(); i++){
+            if (string.charAt(i) == chr){
+                indexArray [index] = i;
+                index++;
+            }
+        }
+        return indexArray;
     }
 
+    // this function get a char and verify if it's lower case and if not change it to lower.
     public static char toLowerCase (char chAt) {
         char ch = chAt;
         if (chAt >= 'A' && chAt <= 'Z' ){
@@ -86,6 +111,7 @@ public class StringOps {
         return ch;
     }
 
+    // this function get a char and verify if it's upper case and if not change it to upper.
     public static char toUpperCase (char chAt) {
         char ch = chAt;
         if (chAt >= 'A' && chAt <= 'Z' ){
@@ -97,3 +123,4 @@ public class StringOps {
     }    
         
 }
+
